@@ -24,7 +24,13 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string'
+            'title' => 'required|string',
+            'content' => 'required',
+            'preview_image' => 'nullable|file',
+            'main_image' => 'nullable|file',
+            'category_id' => 'required|integer|exists:categories,id',
+            'tag_ids' => 'nullable|array',
+            'tag_ids.*' => 'nullable|integer|required|exists:tags,id',
         ];
     }
 
@@ -32,7 +38,8 @@ class UpdateRequest extends FormRequest
     {
         return [
             'title.required' => 'Это поле обязательно к заполнению',
-            'title.string' => 'Это поле дожно быть строкой'
+            'title.string' => 'Это поле дожно быть строкой',
+            'content.required' => 'Это поле обязательно к заполнению',
         ];
     }
 }
