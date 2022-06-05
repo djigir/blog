@@ -8,6 +8,15 @@
                  with font-awesome or any other icon font library -->
 
             <li class="nav-item">
+                <a href="{{ route('admin.user.index') }}" class="nav-link">
+                    <i class="nav-icon fa-solid fa-users"></i>
+                    <p>
+                        Пользователи
+                    </p>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a href="{{ route('admin.post.index') }}" class="nav-link">
                     <i class="nav-icon fa-brands fa-readme"></i>
                     <p>
