@@ -17,11 +17,15 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
-            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreignId('category_id')->constrained();
+            $table->string('preview_image');
+            $table->string('main_image');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->index('category_id', 'post_category_idx');
-            $table->foreign('category_id', 'post_category_fk')->on('category')->references('id');
+
+//            $table->foreign('category_id', 'post_category_fk')->on('categories')->references('id');
 
         });
     }

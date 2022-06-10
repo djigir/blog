@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Главная {{ auth()->user()->name }}</h1>
+                    <h1 class="m-0">Главная <b>{{ auth()->user()->name }}</b></h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -24,18 +24,18 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
+
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>22</h3>
-
+                            <h3>{{ auth()->user()->likePosts()->count() }}</h3>
                             <p>Понравившиеся посты</p>
                         </div>
                         <div class="icon">
                             <i class="fa-solid fa-thumbs-up"></i>
                         </div>
-                        <a href="{{ route('admin.user.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('personal.liked.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -43,14 +43,14 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>32</h3>
+                            <h3>{{ auth()->user()->comments()->count() }}</h3>
 
                             <p>Коментарии</p>
                         </div>
                         <div class="icon">
                             <i class="fa-solid fa-comments"></i>
                         </div>
-                        <a href="{{ route('admin.post.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('personal.comment.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->

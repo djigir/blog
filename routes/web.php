@@ -14,8 +14,46 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {
-    Route::get('/', 'IndexController');
+    Route::get('/', 'IndexController')->name('main.index');
 });
+
+Route::group(['namespace' => 'App\Http\Controllers\About'], function () {
+    Route::get('/about', 'IndexController')->name('about.index');
+});
+
+Route::group(['namespace' => 'App\Http\Controllers\Contact'], function () {
+    Route::get('/contacts', 'IndexController')->name('contact.index');
+});
+
+Route::group(['namespace' => 'App\Http\Controllers\Post', 'prefix' => 'posts'], function () {
+    Route::get('/', 'IndexController')->name('post.index');
+    Route::get('/{post}', 'ShowController')->name('post.show');
+
+    Route::group(['namespace' => 'Comment', 'prefix' => '{post}/comments'], function () {
+        Route::post('/', 'StoreController')->name('post.comment.store');
+    });
+    Route::group(['namespace' => 'Like', 'prefix' => '{post}/likes'], function () {
+        Route::post('/', 'StoreController')->name('post.like.store');
+    });
+
+});
+
+Route::group(['namespace' => 'App\Http\Controllers\Category', 'prefix' => 'categories'], function () {
+    Route::get('/', 'IndexController')->name('category.index');
+
+    Route::group(['namespace' => 'Post', 'prefix' => '{category}/posts'], function () {
+        Route::get('/', 'IndexController')->name('category.post.index');
+    });
+});
+
+Route::group(['namespace' => 'App\Http\Controllers\Tag', 'prefix' => 'tags'], function () {
+//    Route::get('/', 'IndexController')->name('tag.index');
+
+    Route::group(['namespace' => 'Post', 'prefix' => '{tag}/posts'], function () {
+        Route::get('/', 'IndexController')->name('tag.post.index');
+    });
+});
+
 
 Route::group(['namespace' => 'App\Http\Controllers\Personal', 'prefix' => 'personal', 'middleware' => ['auth', 'verified']], function () {
     Route::group(['namespace' => 'Main', 'prefix' => 'main'], function () {
@@ -40,7 +78,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 
 
     Route::group(['namespace' => 'Post', 'prefix' => 'post'], function () {
         Route::get('/', 'IndexController')->name('admin.post.index');
-        Route::get('/post', 'CreateController')->name('admin.post.create');
+        Route::get('/create', 'CreateController')->name('admin.post.create');
         Route::post('/', 'StoreController')->name('admin.post.store');
         Route::get('/{post}', 'ShowController')->name('admin.post.show');
         Route::get('/{post}/edit', 'EditController')->name('admin.post.edit');

@@ -15,16 +15,16 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('post_id');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('post_id')->constrained();
             $table->text('message');
             $table->timestamps();
 
             $table->index('post_id', 'comments_post_idx');
             $table->index('user_id', 'comments_user_idx');
 
-            $table->foreign('post_id', 'comments_post_fk')->on('posts')->references('id');
-            $table->foreign('user_id', 'comments_user_fk')->on('users')->references('id');
+//            $table->foreign('post_id', 'comments_post_fk')->on('posts')->references('id');
+//            $table->foreign('user_id', 'comments_user_fk')->on('users')->references('id');
         });
     }
 

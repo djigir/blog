@@ -58,7 +58,7 @@
                                         <td>{{ $post->id }}</td>
                                         <td>{{ $post->title }}</td>
                                         <td>{{ $post->created_at }}</td>
-                                        <td><a href="{{ route('admin.post.show', $post->id) }}"><i class="fa-solid fa-eye"></i></a></td>
+                                        <td><a href="{{ route('post.show', $post->id) }}" target="_blank"><i class="fa-solid fa-eye"></i></a></td>
                                         <td>
                                             <form action="{{ route('personal.liked.delete', $post->id) }}" method="POST">
                                                 @csrf
