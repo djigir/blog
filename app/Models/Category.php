@@ -28,6 +28,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|Category withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Category withoutTrashed()
  * @mixin \Eloquent
+ * @property string|null $image
+ * @method static \Database\Factories\CategoryFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereImage($value)
  */
 class Category extends Model
 {

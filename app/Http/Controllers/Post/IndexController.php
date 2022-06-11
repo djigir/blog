@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\PostUserLike;
+use App\Models\Tag;
 
 class IndexController extends Controller
 {
     public function __invoke()
     {
-        $posts = Post::orderBy('created_at', 'DESC')->paginate(Post::PER_PAGE);
+        // TODO onEachSide() не рабоает в контролере посмотреть как это изменить (помагает с пагинацией)
+        $posts = Post::orderBy('created_at', 'DESC')->paginate(Post::PER_PAGE)->onEachSide(1);
 
         if (!is_null(auth()->user())) {
             // TODO Найти способ получить не пролайканые посты через отношение глянуть модели Posts и Post_user_likes
@@ -25,7 +27,7 @@ class IndexController extends Controller
             $random_posts = Post::whereNotIn('id', $post_with_user_likes)
                 ->get()
                 ->random(4);
-        }else {
+        } else {
             $random_posts = Post::get()->random(4);
         }
 
@@ -39,6 +41,17 @@ class IndexController extends Controller
             ->get()
             ->take(3);
 
-        return view('post.index', compact('posts', 'random_posts', 'most_liked_posts', 'popular_categories'));
+        $top_tags = Tag::withCount('posts')
+            ->orderBy('posts_count', 'DESC')
+            ->get()
+            ->take(9);
+
+        return view('post.index', compact(
+            'posts',
+            'random_posts',
+            'most_liked_posts',
+            'popular_categories',
+            'top_tags'
+        ));
     }
 }

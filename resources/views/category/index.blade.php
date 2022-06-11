@@ -24,15 +24,7 @@
                 </div>
             </section>
 
-            <div class="pagination mb-5">
-                <div class="container">
-                    <div class="row">
-                        <div class="offset-3">
-                            {{ $categories->withQueryString()->links('pagination::bootstrap-4') }}
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @include('partials.pagination', ['items' => $categories])
 
         </div>
     </main>

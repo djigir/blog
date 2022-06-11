@@ -9,49 +9,15 @@
                 <div class="row">
                     @foreach($posts as $post)
                         <div class="col-md-4 fetured-post blog-post" data-aos="fade-up">
-                            <div class="blog-post-thumbnail-wrapper">
-                                <img src="{{ asset('storage/' . $post->preview_image) }}" alt="blog post">
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <p class="blog-post-category">{{ $post->category->title }}</p>
-                                @auth()
-                                <form action="{{ route('post.like.store', $post->id) }}" method="POST">
-                                    @csrf
-                                    <span>{{ $post->liked_users_count }}</span>
-                                    <button type="submit" class="border-0 bg-transparent">
-                                            @if(auth()->user()->likePosts->contains($post->id))
-                                                <i class="fas fa-heart"></i>
-                                            @else
-                                                <i class="far fa-heart"></i>
-                                            @endif
-                                    </button>
-                                </form>
-                                @endauth
-                                {{-- guest --}}
-                                @guest()
-                                    <div>
-                                        <span>{{ $post->liked_users_count }}</span>
-                                        <i class="far fa-heart"></i>
-                                    </div>
-                                @endguest
-                            </div>
-                            <a href="{{ route('post.show', $post->id) }}" class="blog-post-permalink">
-                                <h6 class="blog-post-title">{{ $post->title }}</h6>
-                            </a>
+
+                            @include('partials.post-card', ['item' => $post])
+
                         </div>
                     @endforeach
                 </div>
             </section>
 
-            <div class="pagination mb-5">
-                <div class="container">
-                    <div class="row">
-                        <div class="offset-3">
-                            {{ $posts->withQueryString()->links('pagination::bootstrap-4') }}
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @include('partials.pagination', ['items' => $posts])
 
         </div>
     </main>

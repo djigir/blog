@@ -41,6 +41,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|Post withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Post withoutTrashed()
  * @mixin \Eloquent
+ * @method static \Database\Factories\PostFactory factory(...$parameters)
  */
 class Post extends Model
 {
@@ -52,8 +53,7 @@ class Post extends Model
 
     protected $withCount = ['likedUsers'];
 
-    // protected $with = ['category'];
-
+    // pagination
     const PER_PAGE = 6;
 
     /* Relations */

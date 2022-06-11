@@ -27,6 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUserId($value)
  * @mixin \Eloquent
+ * @method static \Database\Factories\CommentFactory factory(...$parameters)
  */
 class Comment extends Model
 {
@@ -34,15 +35,23 @@ class Comment extends Model
     protected $table = 'comments';
     protected $guarded = false;
 
+    const PER_PAGE = 12;
+
+    /* Getters */
+    public function getDateCarbonAttribute()
+    {
+        return Carbon::parse($this->created_at);
+    }
+
     /* Relations */
     public function user()
     {
         return $this->belongsTo(User::class,'user_id', 'id');
     }
 
-    /* Getters */
-    public function getDateCarbonAttribute()
+    // TODO проверить связь тут рабатает и один к одному и один ко многим
+    public function post()
     {
-        return Carbon::parse($this->created_at);
+        return $this->belongsTo(Post::class, 'post_id', 'id');
     }
 }

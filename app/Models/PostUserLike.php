@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|PostUserLike whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PostUserLike whereUserId($value)
  * @mixin \Eloquent
+ * @method static \Database\Factories\PostUserLikeFactory factory(...$parameters)
  */
 class PostUserLike extends Model
 {

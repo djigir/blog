@@ -11,6 +11,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ route('personal.main.index') }}">Главная</a></li>
                         <li class="breadcrumb-item active">Коментарии</li>
                     </ol>
                 </div><!-- /.col -->
@@ -27,7 +28,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Responsive Hover Table</h3>
+                            <h3 class="card-title">
+                                Всего постов: <b>{{ $comments->total() }} </b> | Показано:
+                                <b>{{ $comments->lastItem() }}</b> из <b>{{ $comments->total() }}</b>
+                            </h3>
 
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -46,19 +50,21 @@
                             <table class="table table-hover text-nowrap">
                                 <thead>
                                 <tr class="text-center">
-                                    <th>ID</th>
-                                    <th>Название</th>
+                                    <th>№</th>
+                                    <th>Коментарий</th>
+                                    <th>Пост</th>
                                     <th>Дата создания</th>
                                     <th colspan="2">Действия</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($comments as $comment)
+                                @foreach($comments as $index => $comment)
                                     <tr class="text-center">
-                                        <td>{{ $comment->id }}</td>
+                                        <td>{{ $index+1 }}</td>
                                         <td>{{ $comment->message }}</td>
+                                        <td>{{ $comment->post->title }}</td>
                                         <td>{{ $comment->created_at }}</td>
-{{--                                        <td><a href="{{ route('admin.comment.show', $comment->id) }}"><i class="fa-solid fa-eye"></i></a></td>--}}
+{{--                                        <td><a href="{{ route('post.show', $comment->post->id) }}" target="_blank"><i class="fa-solid fa-eye"></i></a></td>--}}
                                         <td><a style="color: #ebba34" href="{{ route('personal.comment.edit', $comment->id) }}"><i class="fa-solid fa-pen"></i></a></td>
                                         <td>
                                             <form action="{{ route('personal.comment.delete', $comment->id) }}" method="POST">
@@ -76,6 +82,10 @@
                         </div>
                         <!-- /.card-body -->
                     </div>
+
+                    @include('partials.pagination', ['items' => $comments])
+
+
                 </div>
             </div>
             <!-- /.row -->

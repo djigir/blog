@@ -30,9 +30,4 @@ class PostTag extends Model
     protected $table = 'post_tags';
     protected $guarded = false;
 
-    /* Relations */
-    public function tag()
-    {
-        return $this->hasMany(Post::class, 'post_id', 'id');
-    }
 }
