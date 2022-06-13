@@ -66,10 +66,9 @@
                         </section>
                     @endif
                     <section class="comment-lists mb-4">
-                        <h2 class="section-title mb-5" data-aos="fade-up">Коментарии ({{ $post->comments->count() }}
-                            )</h2>
+                        <h2 class="section-title mb-5" data-aos="fade-up">Коментарии ({{ $post->comments->count() }})</h2>
 
-                        @foreach($post->comments as $comment)
+                        @foreach($comments as $comment)
                             <div class="comment-text mb-3">
                         <span class="username">
                       <div>

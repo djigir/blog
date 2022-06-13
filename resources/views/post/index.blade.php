@@ -19,6 +19,8 @@
 
             @include('partials.pagination', ['items' => $posts])
 
+            <hr>
+
             <h1 class="edica-page-title" data-aos="fade-up">Случайные статьи</h1>
             <div class="row">
                 <div class="col-md-8">

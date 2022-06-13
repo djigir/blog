@@ -2,13 +2,13 @@
     <div class="row">
         <div class="col-lg-6 offset-lg-3 d-flex">
             <ul class="pagination mx-auto">
-                {{ $items->withQueryString()->onEachSide(1)->links() }}
+                {{ $items->withQueryString()->links() }}
             </ul>
         </div>
     </div>
 </div>
-
-
+{{--// TODO перенести стили в файл--}}
+// TODO перенести стили в файл
 <style>
     .page-item.active .page-link {
         background-color: #F29431;

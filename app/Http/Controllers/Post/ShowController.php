@@ -15,7 +15,14 @@ class ShowController extends Controller
             ->where('id', '!=', $post->id)
             ->get()
             ->take(3);
+        $comments = $post->comments()->orderBy('created_at', 'DESC')->get();
 
-        return view('post.show', compact('post', 'post_created_date', 'related_posts'));
+        return view('post.show',
+            compact(
+                'post',
+                'post_created_date',
+                'related_posts',
+                'comments'
+            ));
     }
 }

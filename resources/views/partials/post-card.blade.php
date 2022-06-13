@@ -32,7 +32,7 @@
 <p class="blog-post-category">
     <b>Тэги:</b>
     @foreach($item->tags()->get() as $tag)
-        <a href="{{ route('tag.post.index', $item->category->id) }}" style="color: #F29431">
+        <a href="{{ route('tag.post.index', $tag->id) }}" style="color: #F29431">
             {{ '#'.$tag->title }}
         </a>
     @endforeach

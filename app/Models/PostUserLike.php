@@ -29,4 +29,11 @@ class PostUserLike extends Model
     use HasFactory;
     protected $table = 'post_user_likes';
     protected $guarded = false;
+
+    /* Getters */
+    public function getLikedPostsIdsByUserAttribute()
+    {
+        return PostUserLike::where('user_id', auth()->user()->id)->pluck('post_id')->toArray();
+    }
+
 }

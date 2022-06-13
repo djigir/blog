@@ -49,7 +49,6 @@ class Comment extends Model
         return $this->belongsTo(User::class,'user_id', 'id');
     }
 
-    // TODO проверить связь тут рабатает и один к одному и один ко многим
     public function post()
     {
         return $this->belongsTo(Post::class, 'post_id', 'id');

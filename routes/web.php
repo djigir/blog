@@ -47,8 +47,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Category', 'prefix' => 'categ
 });
 
 Route::group(['namespace' => 'App\Http\Controllers\Tag', 'prefix' => 'tags'], function () {
-//    Route::get('/', 'IndexController')->name('tag.index');
-
     Route::group(['namespace' => 'Post', 'prefix' => '{tag}/posts'], function () {
         Route::get('/', 'IndexController')->name('tag.post.index');
     });

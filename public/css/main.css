@@ -1,0 +1,19 @@
+/* login register form */
+.auth-form {
+    margin-top: 6rem;
+    margin-bottom: 9rem;
+}
+
+.custom-text-md-end {
+    text-align: right;
+}
+
+.custom-form-check-label {
+    line-height: 1.6;
+}
+
+@media screen and (max-width: 767px) {
+    .custom-text-md-end {
+        text-align: left;
+    }
+}
