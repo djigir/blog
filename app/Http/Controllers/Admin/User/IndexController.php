@@ -9,7 +9,7 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        $users = User::all();
+        $users = User::orderBy('created_at', 'DESC')->paginate(10);
         return view('admin.user.index', compact('users'));
     }
 }

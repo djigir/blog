@@ -9,7 +9,7 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        $tags = Tag::all();
+        $tags = Tag::orderBy('created_at', 'DESC')->paginate(10);
         return view('admin.tag.index', compact('tags'));
     }
 }

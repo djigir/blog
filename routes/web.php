@@ -23,6 +23,7 @@ Route::group(['namespace' => 'App\Http\Controllers\About'], function () {
 
 Route::group(['namespace' => 'App\Http\Controllers\Contact'], function () {
     Route::get('/contacts', 'IndexController')->name('contact.index');
+    Route::post('/send-email', 'StoreController')->name('contact.store');
 });
 
 Route::group(['namespace' => 'App\Http\Controllers\Post', 'prefix' => 'posts'], function () {

@@ -10,7 +10,7 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        $categories = Category::all();
+        $categories = Category::orderBy('created_at', 'DESC')->paginate(10);
         return view('admin.category.index', compact('categories'));
     }
 }

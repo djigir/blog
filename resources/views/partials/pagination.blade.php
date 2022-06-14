@@ -7,8 +7,7 @@
         </div>
     </div>
 </div>
-{{--// TODO перенести стили в файл--}}
-// TODO перенести стили в файл
+
 <style>
     .page-item.active .page-link {
         background-color: #F29431;

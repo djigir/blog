@@ -32,7 +32,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Responsive Hover Table</h3>
+                            <h3 class="card-title">
+                                Всего тэгов: <b>{{ $tags->total() }} </b> | Показано:
+                                <b>{{ $tags->lastItem() }}</b> из <b>{{ $tags->total() }}</b>
+                            </h3>
 
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -81,13 +84,15 @@
                         </div>
                         <!-- /.card-body -->
                     </div>
+
+                    @include('partials.pagination', ['items' => $tags])
+
                 </div>
                 <!-- ./col -->
             </div>
             <!-- /.row -->
 
 
-        </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
 </div>

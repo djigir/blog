@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-11 mx-auto">
-                    <h1 class="edica-page-title" data-aos="fade-up">About Us</h1>
+                    <h1 class="edica-page-title" data-aos="fade-up">О нас</h1>
                     <section class="edica-about-intro py-5">
                         <div class="row">
                             <div class="col-md-6" data-aos="fade-right" data-aos-delay="150">
@@ -21,7 +21,7 @@
                     <section class="edica-about-vision py-5">
                         <div class="row">
                             <div class="col-md-6 pb-3 pb-md-0 mb-4 mb-md-0" data-aos="fade-right" data-aos-delay="200">
-                                <img src="assets/images/about-vision.png" alt="vision" class="img-fluid">
+                                <img src="{{ asset('assets/images/about-vision.png') }}" alt="vision" class="img-fluid">
                             </div>
                             <div class="col-md-6 d-flex flex-column justify-content-center">
                                 <h2 class="vision-title" data-aos="fade-left">Our Vision</h2>
@@ -58,7 +58,7 @@
                                 <p class="goal-text">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out printed graphic or web designs. The passage is at attributed to an unknown typesetters in 1the 5th century who is thought scrambled with all parts of Cicero’s De. Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out printed graphic or web designs</p>
                             </div>
                             <div class="col-md-6" data-aos="fade-left">
-                                <img src="assets/images/about-goal.png" alt="goal" class="img-fluid">
+                                <img src="{{ asset('assets/images/about-goal.png') }}" alt="goal" class="img-fluid">
                             </div>
                         </div>
                     </section>
@@ -66,22 +66,22 @@
                         <h2 class="clients-title mb-5" data-aos="fade-up">Top clients</h2>
                         <div class="row py-4" data-aos="fade-up">
                             <div class="col-6 col-md-2 mb-4 mb-md-0">
-                                <img src="assets/images/Partner_1@2x.png" alt="client logo" class="img-fluid" width="140px">
+                                <img src="{{ asset('assets/images/Partner_1@2x.png') }}" alt="client logo" class="img-fluid" width="140px">
                             </div>
                             <div class="col-6 col-md-2 mb-4 mb-md-0">
-                                <img src="assets/images/Partner_2@2x.png" alt="client logo" width="140px" class="img-fluid">
+                                <img src="{{ asset('assets/images/Partner_2@2x.png') }}" alt="client logo" width="140px" class="img-fluid">
                             </div>
                             <div class="col-6 col-md-2 mb-4 mb-md-0">
-                                <img src="assets/images/Partner_3@2x.png" alt="client logo" width="140px" class="img-fluid">
+                                <img src="{{ asset('assets/images/Partner_3@2x.png') }}" alt="client logo" width="140px" class="img-fluid">
                             </div>
                             <div class="col-6 col-md-2 mb-4 mb-md-0">
-                                <img src="assets/images/Partner_4@2x.png" alt="client logo" width="140px" class="img-fluid">
+                                <img src="{{ asset('assets/images/Partner_4@2x.png') }}" alt="client logo" width="140px" class="img-fluid">
                             </div>
                             <div class="col-6 col-md-2 mb-4 mb-md-0">
-                                <img src="assets/images/Partner_5@2x.png" alt="client logo" width="140px" class="img-fluid">
+                                <img src="{{ asset('assets/images/Partner_5@2x.png') }}" alt="client logo" width="140px" class="img-fluid">
                             </div>
                             <div class="col-6 col-md-2 mb-4 mb-md-0">
-                                <img src="assets/images/Partner_6@2x.png" alt="client logo" width="140px" class="img-fluid">
+                                <img src="{{ asset('assets/images/Partner_6@2x.png') }}" alt="client logo" width="140px" class="img-fluid">
                             </div>
                         </div>
                     </section>
