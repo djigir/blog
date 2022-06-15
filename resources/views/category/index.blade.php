@@ -10,7 +10,7 @@
                         @if($category->posts->count() > 0)
                             <div class="col-md-4 fetured-post blog-post" data-aos="fade-up">
                                 <div class="blog-post-thumbnail-wrapper">
-                                    <img src="{{ $category->image }}" alt="blog post">
+                                    <img src="{{ asset('storage/'. $category->image) }}" alt="blog post">
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <p class="blog-post-category">Количество постов: {{ $category->posts->count() }}</p>

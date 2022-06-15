@@ -24,7 +24,8 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string'
+            'title' => 'required|string',
+            'image' => 'nullable|file',
         ];
     }
 
@@ -32,7 +33,9 @@ class UpdateRequest extends FormRequest
     {
         return [
             'title.required' => 'Это поле обязательно к заполнению',
-            'title.string' => 'Это поле дожно быть строкой'
+            'title.string' => 'Это поле дожно быть строкой',
+            'image.required' => 'Поле "Добавить изображение" обязательно к заполнению',
+            'image.file' => 'Необходимо выбрать файл',
         ];
     }
 }

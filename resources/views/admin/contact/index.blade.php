@@ -7,12 +7,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Тэги</h1>
+                    <h1 class="m-0">Контакты</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
-                        <li class="breadcrumb-item active">Тэги</li>
+                        <li class="breadcrumb-item active">Контакты</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -24,31 +24,23 @@
     <section class="content">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
-            <div class="row">
-                <div class="col-2 mb-4">
-                    <a href="{{ route('admin.tag.create') }}" class="btn btn-block btn-primary">Создать</a>
-                </div>
-            </div>
-                <div class="col-12">
+            <div class="col-12">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
-                                Всего тэгов: <b>{{ $tags->total() }} </b> | Показано:
-                                <b>{{ $tags->lastItem() }}</b> из <b>{{ $tags->total() }}</b>
+                                Всего сообщений: <b>{{ $contacts->total() }} </b> | Показано:
+                                <b>{{ $contacts->lastItem() }}</b> из <b>{{ $contacts->total() }}</b>
                             </h3>
-
                             <div class="card-tools">
-                                <form action="{{ route('admin.tag.search') }}">
-                                    <div class="input-group input-group-sm" style="width: 150px;">
-                                        <input type="text" name="query" class="form-control float-right" placeholder="Search">
+                                <div class="input-group input-group-sm" style="width: 150px;">
+                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-default">
-                                                <i class="fas fa-search"></i>
-                                            </button>
-                                        </div>
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-default">
+                                            <i class="fas fa-search"></i>
+                                        </button>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -56,22 +48,25 @@
                             <table class="table table-hover text-nowrap">
                                 <thead>
                                 <tr class="text-center">
-                                    <th>ID</th>
-                                    <th>Название</th>
+                                    <th>№</th>
+                                    <th>Имя</th>
+                                    <th>Зарегистрирован</th>
                                     <th>Дата создания</th>
-                                    <th colspan="3">Действия</th>
+                                    <th colspan="2">Действия</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($tags as $tag)
+                                @foreach($contacts as $index => $contact)
                                 <tr class="text-center">
-                                    <td>{{ $tag->id }}</td>
-                                    <td>{{ $tag->title }}</td>
-                                    <td>{{ $tag->created_at }}</td>
-                                    <td><a href="{{ route('admin.tag.show', $tag->id) }}"><i class="fa-solid fa-eye"></i></a></td>
-                                    <td><a style="color: #ebba34" href="{{ route('admin.tag.edit', $tag->id) }}"><i class="fa-solid fa-pen"></i></a></td>
+                                    <td>{{ $index+1 }}</td>
+                                    <td>{{ $contact->name }}</td>
+                                    <td class="{{ $contact->is_registered == 0 ? 'text-danger' : 'text-success' }}">
+                                        {{ $contact->is_registered == 0 ? 'Нет' : 'Да' }}
+                                    </td>
+                                    <td>{{ $contact->created_at }}</td>
+                                    <td><a href="{{ route('admin.contact.show', $contact->id) }}"><i class="fa-solid fa-eye"></i></a></td>
                                     <td>
-                                        <form action="{{ route('admin.tag.delete', $tag->id) }}" method="POST">
+                                        <form action="{{ route('admin.contact.delete', $contact->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="border-0 bg-transparent">
@@ -87,14 +82,12 @@
                         <!-- /.card-body -->
                     </div>
 
-                    @include('partials.pagination', ['items' => $tags])
+                    @include('partials.pagination', ['items' => $contacts])
 
                 </div>
                 <!-- ./col -->
             </div>
             <!-- /.row -->
-
-
     </section>
     <!-- /.content -->
 </div>

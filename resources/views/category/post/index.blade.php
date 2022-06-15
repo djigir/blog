@@ -4,7 +4,7 @@
 
     <main class="blog mb-5">
         <div class="container">
-            <h1 class="edica-page-title" data-aos="fade-up">{{ $posts[0]->category->title }}</h1>
+            <h1 class="edica-page-title" data-aos="fade-up">Категория: {{ $posts[0]->category->title }}</h1>
             <section class="featured-posts-section">
                 <div class="row">
                     @foreach($posts as $post)

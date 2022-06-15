@@ -84,6 +84,23 @@
                     </div>
                 </div>
                 <!-- ./col -->
+
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-purple">
+                        <div class="inner">
+                            <h3>{{ $contacts_count }}</h3>
+
+                            <p>Контакты</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa-solid fa-message"></i>
+                        </div>
+                        <a href="{{ route('admin.contact.index') }}" class="small-box-footer">Подробнее <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+
             </div>
             <!-- /.row -->
 

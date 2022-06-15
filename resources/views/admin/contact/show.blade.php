@@ -7,13 +7,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">{{ $post->title }}</h1>
+                    <h1 class="m-0">Контакты (сообщение)</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('admin.post.index') }}">Посты</a></li>
-                        <li class="breadcrumb-item active">{{ $post->title }}</li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.contact.index') }}">Контакты</a></li>
+                        <li class="breadcrumb-item active">{{ $contact->name }}</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -27,10 +27,7 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-2 mb-4">
-                    <a href="{{ route('admin.post.edit', $post->id) }}" class="btn btn-block btn-warning">Редактировать</a>
-                </div>
-                <div class="col-2 mb-4">
-                    <form action="{{ route('admin.post.delete', $post->id) }}" method="POST">
+                    <form action="{{ route('admin.contact.delete', $contact->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-block btn-danger">Удалить</button>
@@ -44,27 +41,25 @@
                                 <tbody>
                                 <tr class="text-center">
                                     <td>ID</td>
-                                    <td>{{ $post->id }}</td>
+                                    <td>{{ $contact->id }}</td>
                                 </tr>
                                 <tr class="text-center">
-                                    <td>Название</td>
-                                    <td>{{ $post->title }}</td>
+                                    <td>Имя</td>
+                                    <td>{{ $contact->name }}</td>
                                 </tr>
                                 <tr class="text-center">
-                                    <td>Превью</td>
-                                    <td>
-                                        <img src="{{ asset('storage/' . $post->preview_image) }}" alt="preview_image" class="w-25">
+                                    <td>Зарегистрирован</td>
+                                    <td class="{{ $contact->is_registered == 0 ? 'text-danger' : 'text-success' }}">
+                                        {{ $contact->is_registered == 0 ? 'Нет' : 'Да' }}
                                     </td>
                                 </tr>
                                 <tr class="text-center">
-                                    <td>Главное изображение</td>
-                                    <td>
-                                        <img src="{{ asset('storage/' . $post->main_image) }}" alt="main_image" class="w-25">
-                                    </td>
+                                    <td>Сообщение</td>
+                                    <td>{{ $contact->message }}</td>
                                 </tr>
                                 <tr class="text-center">
                                     <td>Дата создания</td>
-                                    <td>{{ $post->created_at }}</td>
+                                    <td>{{ $contact->created_at }}</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -75,9 +70,6 @@
                 <!-- ./col -->
             </div>
             <!-- /.row -->
-
-
-        </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
 </div>

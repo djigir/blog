@@ -51,6 +51,12 @@
                                     <td>{{ $category->title }}</td>
                                 </tr>
                                 <tr class="text-center">
+                                    <td>Изображение</td>
+                                    <td>
+                                        <img src="{{ asset('storage/' . $category->image) }}" alt="category-image" class="w-50" >
+                                    </td>
+                                </tr>
+                                <tr class="text-center">
                                     <td>Дата создания</td>
                                     <td>{{ $category->created_at }}</td>
                                 </tr>
@@ -64,8 +70,6 @@
             </div>
             <!-- /.row -->
 
-
-        </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
 </div>

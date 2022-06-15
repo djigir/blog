@@ -83,6 +83,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 
         Route::get('/{post}/edit', 'EditController')->name('admin.post.edit');
         Route::patch('/{post}', 'UpdateController')->name('admin.post.update');
         Route::delete('/{post}', 'DeleteController')->name('admin.post.delete');
+        Route::get('/search/posts', 'SearchController')->name('admin.post.search');
     });
 
     Route::group(['namespace' => 'Category', 'prefix' => 'category'], function () {
@@ -93,6 +94,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 
         Route::get('/{category}/edit', 'EditController')->name('admin.category.edit');
         Route::patch('/{category}', 'UpdateController')->name('admin.category.update');
         Route::delete('/{category}', 'DeleteController')->name('admin.category.delete');
+        Route::get('/search/categories', 'SearchController')->name('admin.category.search');
     });
 
     Route::group(['namespace' => 'Tag', 'prefix' => 'tags'], function () {
@@ -103,6 +105,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 
         Route::get('/{tag}/edit', 'EditController')->name('admin.tag.edit');
         Route::patch('/{tag}', 'UpdateController')->name('admin.tag.update');
         Route::delete('/{tag}', 'DeleteController')->name('admin.tag.delete');
+        Route::get('/search/tags', 'SearchController')->name('admin.tag.search');
     });
 
     Route::group(['namespace' => 'User', 'prefix' => 'users'], function () {
@@ -113,6 +116,13 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 
         Route::get('/{user}/edit', 'EditController')->name('admin.user.edit');
         Route::patch('/{user}', 'UpdateController')->name('admin.user.update');
         Route::delete('/{user}', 'DeleteController')->name('admin.user.delete');
+        Route::get('/search/users', 'SearchController')->name('admin.user.search');
+    });
+
+    Route::group(['namespace' => 'Contact', 'prefix' => 'contacts'], function () {
+        Route::get('/', 'IndexController')->name('admin.contact.index');
+        Route::get('/{contact}', 'ShowController')->name('admin.contact.show');
+        Route::delete('/{contact}', 'DeleteController')->name('admin.contact.delete');
     });
 
 });

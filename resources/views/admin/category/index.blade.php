@@ -33,20 +33,22 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
-                                Всего пользователей: <b>{{ $categories->total() }} </b> | Показано:
+                                Всего категорий: <b>{{ $categories->total() }} </b> | Показано:
                                 <b>{{ $categories->lastItem() }}</b> из <b>{{ $categories->total() }}</b>
                             </h3>
 
                             <div class="card-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                                <form action="{{ route('admin.category.search') }}">
+                                    <div class="input-group input-group-sm" style="width: 150px;">
+                                        <input type="text" name="query" class="form-control float-right" placeholder="Поиск">
 
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default">
-                                            <i class="fas fa-search"></i>
-                                        </button>
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-default">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                         <!-- /.card-header -->
@@ -56,15 +58,19 @@
                                 <tr class="text-center">
                                     <th>ID</th>
                                     <th>Название</th>
+                                    <th>Картинка</th>
                                     <th>Дата создания</th>
                                     <th colspan="3">Действия</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($categories as $category)
+                                @foreach($categories as $index => $category)
                                 <tr class="text-center">
-                                    <td>{{ $category->id }}</td>
+                                    <td>{{ $index+1 }}</td>
                                     <td>{{ $category->title }}</td>
+                                    <td>
+                                        <img src="{{ asset('storage/' . $category->image) }}" alt="category-image" style="width: 155px">
+                                    </td>
                                     <td>{{ $category->created_at }}</td>
                                     <td><a href="{{ route('admin.category.show', $category->id) }}"><i class="fa-solid fa-eye"></i></a></td>
                                     <td><a style="color: #ebba34" href="{{ route('admin.category.edit', $category->id) }}"><i class="fa-solid fa-pen"></i></a></td>

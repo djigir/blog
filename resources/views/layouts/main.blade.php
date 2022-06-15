@@ -76,14 +76,16 @@
         <div class="footer-banner" data-aos="fade-up">
             <h1 class="banner-title">Скоро приложение в</h1>
             <div class="banner-btns-wrapper">
-                <button class="btn btn-success"><img src="{{ asset('assets/images/apple@1x.svg') }}" alt="ios"
-                                                     class="mr-2"> App Store
+                <button class="btn btn-success">
+                    <img src="{{ asset('assets/images/apple@1x.svg') }}" alt="ios" class="mr-2">
+                    App Store
                 </button>
-                <button class="btn btn-success"><img src="{{ asset('assets/images/android@1x.svg') }}" alt="android"
-                                                     class="mr-2"> Google Play
+                <button class="btn btn-success">
+                    <img src="{{ asset('assets/images/android@1x.svg') }}" alt="android" class="mr-2">
+                    Google Play
                 </button>
             </div>
-            <p class="banner-text">Читай любимый блог как на сайте так и на своих устройствах</p>
+            <p class="banner-text">Читайте любимый блог как на сайте так и в приложении на своих устройствах</p>
         </div>
     </div>
 </section>

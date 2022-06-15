@@ -4,7 +4,9 @@
 <div class="d-flex justify-content-between">
     <p class="blog-post-category">
         <b>Категория:</b>
-        <a href="{{ route('category.post.index', $item->category->id) }}" style="color: #F29431">{{ $item->category->title }}</a>
+        <a href="{{ route('category.post.index', $item->category->id) }}" style="color: #F29431">
+            {{ $item->category->title }}
+        </a>
     </p>
     @auth()
         <div class="post-like-block">
